@@ -1,0 +1,17 @@
+\section{Style transfer using a Linear Transformation}
+Here we have two audios of a simple rhythm of song ``silent night'' played by piano (audio A) and classical guitar (audio B), and one audio of a simple rhythm of song ``little star'' played by piano (audio C). 
+
+All audios are given in \texttt{\textbf{hw1materials/Audio}}.
+
+From these files, you can obtain the spectrogram ${\bf M}_A$, ${\bf M}_B$ and ${\bf M}_C$. Your objective is to find the spectrogram of the classical guitar version of the song ``little star'' (${\bf M}_D$).
+
+You may find all given audios have two channels. To compute the spectrogram from the given files just work with the first channel and use the same instructions of the previous problem, but considering 1024 as sample window, instead of 2048.
+
+In this problem, we assume that style can be transferred using a linear transformation. Formally, we need to find the matrix ${\bf T}$ such that
+$$ {\bf T} {\bf M}_A \approx {\bf M}_B$$
+
+\begin{enumerate}
+    \item Write a code to determine matrix ${\bf T}$ and report the value of $\| {\bf T} {\bf M}_A - {\bf M}_B \|^2_F$. \\ \ul{Submit the matrix ${\bf T}$ as  \texttt{problem3t.csv}  and your code}
+    \item Our model considers that ${\bf T}$ can transfer style from piano music to classical guitar music. Applying ${\bf T}$ on audio C should give us a estimation of ``little star'' played by guitar, getting an estimation of ${\bf M}_D$. Using this matrix and phase matrix of C, synthesize an audio signal. \\
+    \ul{Submit your code, your estimation of the matrix ${\bf M}_D$ as \texttt{problem3md.csv} and the sythensized audio named as \texttt{problem3.wav}  }
+\end{enumerate}

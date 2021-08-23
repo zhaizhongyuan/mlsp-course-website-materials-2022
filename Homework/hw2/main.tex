@@ -1,0 +1,84 @@
+\documentclass{article}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{hw}
+\usepackage{bm}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true,urlcolor=blue]{hyperref}
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{float}
+\setlength{\marginparwidth}{2.15cm}
+\usepackage{booktabs}
+%\usepackage{enumitem}
+\usepackage{epsfig}
+\usepackage{setspace}
+\usepackage{parskip}
+\usepackage{bbm}
+\usepackage[]{algorithm2e}
+\usepackage{comment}
+\usepackage{pdfpages}
+\usepackage{physics}
+\usepackage{ulem}
+\usepackage{hyperref}
+\usepackage{macro}
+\usepackage{enumerate}
+\usepackage{mcode}
+\usepackage{soul}
+\usepackage[symbol]{footmisc}
+
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+\title{mlsp - hw2 - 2020}
+\author{mahmoudi} % adopted from Abelino
+\date{September 2020}
+
+\begin{document}
+
+\begin{center}
+  \centerline{\textsc{\LARGE Homework 2}}
+  \vspace{0.5em}
+  \centerline{\textsc{\Large Data-driven Representations - Boosting - Face Detection}}
+  \vspace{1em}
+  \textsc{\large CMU 11-755/18-797: Machine Learning for Signal Processing (Fall 2020)} \\
+  \vspace{1em}
+  \centerline{OUT: September 22nd, 2020 }
+  \centerline{DUE: {\bf October 11th, 11:59 PM}}
+\end{center}
+\graphicspath{images}
+
+
+\section*{START HERE: Instructions}
+
+
+\begin{itemize*}
+
+\item \textbf{Collaboration policy:} Collaboration on solving the homework is allowed, after you have thought about the problems on your own.  It is also OK to get clarification (but not solutions) from books or online resources, again after you have thought about the problems on your own.  There are two requirements: first, cite your collaborators fully and completely (e.g., ``Jane explained to me what is asked in Question 3.4'').  Second, write your solution {\em independently}: close the book and all of your notes, and send collaborators out of the room, so that the solution comes from you only.
+
+
+\vspace{0.1in}
+\item\textbf{Submitting your work:} Assignments should be submitted as PDFs using Canvas unless explicitly stated otherwise.  Please submit all results as ``report\underline{ }YourAndrewID.pdf'' in you submission.
+\textbf{Each derivation/proof should be completed on a separate page}. Submissions can be handwritten, but should be labeled and clearly legible.  Else, submissions can be written in LaTeX.  Upon submission, label each question using the template provided by Canvas. Please refer to Piazza for detailed instruction for joining Canvas and submitting your homework.
+
+\vspace{0.1in}
+\item \textbf{Programming}: All programming portions of the assignments should be submitted to Canvas as well.  Please \texttt{zip} or \texttt{tar} all the code and output files together, and submit the compressed file together with the pdf report. We will not be using this for autograding, %but rather for plagiarism detection, 
+meaning you may use any language which you like to submit.
+
+\vspace{0.1in}
+\item \textbf{Late submissions}: Any homework submitted after the deadline will receive no credit. Please make sure you submit on time. 
+\end{itemize*}
+
+\newpage
+\input{question1.tex}
+
+\newpage
+\input{question2.tex}
+
+% \newpage
+% \input{question3.tex}
+
+\newpage
+\input{question4.tex}
+%\newpage
+%\input{instructions.tex}
+\end{document}

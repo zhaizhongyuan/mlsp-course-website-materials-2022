@@ -1,0 +1,28 @@
+\section{Moore-Penrose Inverse}
+The pseudoinverse we covered in lecture is more formally known as the Moore-Penrose inverse. The Moore-Penrose inverse was independently discovered throughout the 20th century. Its name is due to E.H. Moore, an influential mathematician and first head of the mathematics department at the University of Chicago, and Roger Penrose, a mathematician and physicist with too many awards to count.
+
+In lecture, we covered two pseudoinverses for two different cases. The one which we will explore here is the pseudoinverse for the under-determined case:
+\[\textrm{Pinv}(T) = T^T(TT^T)^{-1}.\]
+
+\subsection{Moore-Penrose Conditions}
+
+Wikipedia defines the pseudoinverse of $A\in\mathbb{K}^{m\times n}$ as $A^+ \in \mathbb{K}^{n \times m}$ which satisfies:
+\begin{enumerate}
+    \item $A A^+ A = A$
+    \item $A^+ A A^+ = A^+$
+    \item $(A A^+)^* = A A^+$
+    \item $(A^+ A)^* = A^+ A$
+\end{enumerate}
+Here, $A^*$ refers to the conjugate transpose of $A$. Wikipedia assumes that $A$ is defined over a given field $\mathbb{K}$; however, we will restrict our discussion and this problem to $\mathbb{R}$, the field of real numbers. In this case, the conjugate transpose becomes regular matrix transposition. The four conditions above are referred to as the Moore-Penrose conditions.
+
+\bigskip
+
+\noindent Using our definition of the pseudoinverse for the under-determined case, verify that each of the Moore-Penrose conditions holds.
+
+\subsection{Pinv and SVD}
+The pseudo-inverse of a matrix can be calculated via singular value decomposition. If we represent a matrix $A$ as $A = U \Sigma V^{*}$, then you can show that $A^{+} = V\Sigma^{+}U^*.$ The popular Python package Numpy uses this fact to calculate the pseudoinverse.
+
+\bigskip
+\noindent Show that the pseudoinverse of $A$ can be computed by $A^{+} = V\Sigma^{+}U^*.$ That is, show that each of the Moore-Penrose conditions hold when we define the pseudoinverse of $A$ as above. Here, $U, \Sigma,$ and $V$ are all the usual components from singular value decomposition. Please provide at least one reason why this may be a good implementation.
+
+\textbf{N.B.:} In this problem, you will see that a lot of quantities either cancel out or become the identity matrix. In your homework submission, you need to clearly explain why a given quantity would reduce to the identity matrix or cancel out. For example, saying ``$BB^T = I$" will not get you any points. Instead, saying ``$BB^T = I$ since $B$ is an orthogonal matrix, and the inverse of an orthogonal matrix is its transpose" will not only get you points but it will also make the course staff smile.

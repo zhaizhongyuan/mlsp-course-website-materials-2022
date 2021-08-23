@@ -1,0 +1,18 @@
+\subsection{Bonus problem: SVD}
+
+Singular Value Decomposition decomposes any matrix $X$ as 
+\[
+X = U S V^\top,
+\]
+where $V$ is the matrix of right singular vectors, $U$ is the matrix of left singular vectors, and $S$ is a diagonal matrix of singular values.  We learned how to interpret these in class.
+
+Let $V_i$ represent the columns of $V$, $U_i$ be the columns of $U$, and $S_i$ be the $i^{\rm th}$ diagonal entry of $S$. By the definition of SVD, $\|V_i\|^2 = 1$, and $V_i^\top V_j = 0\,\forall \,i\neq j$, i.e. the right singular vectors are orthonormal.  Similarly the left singular vectors too are orthonormal, i.e.  $\|U_i\|^2 = 1$, and $U_i^\top U_j = 0\,\forall \,i\neq j$. 
+
+When $X$ is viewed as a data-container matrix the ``energy'' in the data is given by $Egy(X) = \sum_{i,j}X_{ij}^2$, where $X_{ij}$ is the $(i,j)^{\rm th}$ entry of $X$.
+
+Show that 
+\[
+Egy(X) = \sum_{i} S_i^2.
+\]
+
+Hint: $Egy(X) = trace(X^\top X).$

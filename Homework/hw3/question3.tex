@@ -1,0 +1,256 @@
+
+
+
+\section{Sparse recovery}
+
+We have previously noted in class that given a dictionary $D$ and a data $X$ that can be composed as a \textit{sparse} combination of dictionary entries, i.e. we can write $X = D Y$, where $\|Y\|_0 \leq k$ for some small value of $k$, then $Y$ can be recovered from $X$ and $D$ using sparse recovery techniques. Specifically, we noted that this can be estimtated through the following minimization:
+
+\begin{eqnarray}
+\hat{Y} & = & \arg\min_Y \|X - DY\|_2^2 + \lambda \|Y\|_1
+\end{eqnarray}
+
+We will now see how this simple principle can be used to \textit{subsample} data and still recover it.  This principle is known as ``compressive sensing''.\\
+\\
+We will use an example to explain the concept. The example will also be your homework problem.
+
+\subsection*{A little story: Cassini-Huygens}
+
+The Cassini spacecraft was launched on 15 Oct 1997 and entered into orbit around Saturn on 1 July 2004.  Ever since it has been orbiting the ringed planet, taking thousands of pictures of Saturn, its rings, and its moons, and beaming them back to Earth. \href{https://saturn.jpl.nasa.gov/galleries/images/}{ Here} are some of the gorgeous pictures sent by Cassini to earth. Cassini is powered by about 33 kg of Plutonium-238, which will continue to provide power to the spacecraft until the end of its mission.
+\\
+\\
+On Christmas day 2004 Cassini launched the Huygens probe towards Saturn's moon, Titan. Huygens landed on Titan on 14 Jan 2005. Unlike Cassini, Huygens was powered by a battery. By design, the module had no more than three hours of battery life, most of which was planned to be used during the descent onto Titan. Engineers expected to get at most only 30 minutes of data from the surface, much of which was in the form of pictures of Titan's surface and topography. \href{http://esamultimedia.esa.int/docs/titanraw/index.htm}{Here} are the incredible pictures sent by Huygens. 
+\\
+\\
+Our ``story'' ends with this note: Huygens could only send 350 pictures before its batteries ran out of power. (An additional 350 pictures were lost because of a software bug due to which the channel they were sent on was ignored).
+
+\subsection*{Compressive sensing to the rescue}
+One of the main consumptions of on-board battery is for the \textit{transmission} of the pictures.  Each image must be adequately ``wrapped'' with error-correcting code and transmitted to the recipient (Huygens transmitted to both Cassini and the Earth). The amount of energy consumed to transmit a picture directly relates to the number of pixels captured -- more pixels require more energy both to capture and to transmit.
+\\
+\\
+Let us now consider an alternate scheme.  
+
+\begin{enumerate}
+\item[(a)] \textit{\textbf{A note on image sparsity in the wavelet domain}}
+
+It is well known that when considered in the wavelet transform domain, images are sparse. A wavelet transform can be viewed as a matrix operation (just as a discrete Fourier transform can). Let $I$ be any image (expressed as a vector). The wavelet transform $\mathcal{F}$ of the image can be computed as 
+\begin{eqnarray}
+\mathcal{F} & =& WI
+\end{eqnarray}
+where $W$ is the transform matrix. (In reality, the transform is viewed as a \textit{filterbank}, but we will assume the simpler model above for our discussion).
+
+The image itself can be recovered from the transform as
+\begin{eqnarray}
+I & = & W^{-1} \mathcal{F}
+\end{eqnarray}
+
+For images, $\mathcal{F}$ is generally sparse, i.e. most of the components of $\mathcal{F}$ are zero or close to zero.\textbf{ We will use this to our benefit}.
+
+
+\item[(b)] \textit{\textbf{Capturing \textit{one-pixel} masked integral images}}
+
+Instead of simply snapping a picture directly, consider a scheme where Huygens would instead apply a \textit{random mask} to its camera and computes an \textit{integral} instead.  So, for instance, instead of capturing the entire image, Huygens applies a random mask to get the following picture
+\begin{center}
+\includegraphics[scale=0.4]{figs/saturnmask1.png}
+\end{center}
+and computes a \textbf{single} integral value
+\begin{eqnarray}
+P_1 &  = & \sum_{i,j} m_{i,j} I_{i,j}
+\end{eqnarray}
+where $m_{i,j}$ is the value of the mask at pixel $(i,j)$, and $I_{i,j}$ is the actual image value. Representing the mask as the vector $\mathbf{m}_1$, where the subscript $1$ is to indicate that this is the first such mask applied, Huygens' first measurement would be
+\begin{eqnarray}
+P_1 & = & \mathbf{m}_1^\top I
+\end{eqnarray}
+
+Similarly, applying a series of other such masks, e.g. 
+
+\begin{center}
+\includegraphics[scale=0.4]{figs/saturnmask2.png} $\qquad$ \includegraphics[scale=0.4]{figs/saturnmask3.png}
+\end{center}
+
+Huygens can now get a \textit{series of measurements} $P_1,~P_2,~P_3,\cdots,P_K$ of (scalar) measurements, where $P_i$ has been obtained using mask $\mathbf{m}_i$, and $K$ is the total number of measurements obtained in this manner. Representing all of the masks as a single matrix $\mathbf{M} = [\mathbf{m}_1~\mathbf{m}_2~\mathbf{m}_3\cdots\mathbf{m}_K]^\top$, and the measurements $P_i$ collectively as a vector $\mathbf{P} = [P_1~P_2~P_3\cdots P_K]^\top$, we can write
+\begin{eqnarray}
+\mathbf{P} & = & \mathbf{M}I
+\end{eqnarray}
+
+Note that $K$ may be far fewer than the number of pixels in the image. Huygens can now simply transmit $P_1 \cdots P_K$, and save on power. If $K < N$, where $N$ is the number of pixels in the image, Huygens could use the saved energy to take more pictures and transmit them. Since we are sending far fewer numbers than we would if we were to actually send the entire image, we will call these \textit{compressed} measurements.
+
+\item[(c)] \textit{\textbf{Recovering the full image from the compressed measurements}}
+
+But how then can the $N$-pixel pictures themselves be recovered from this sequence of $K$ compressed measurements?  For this we exploit the sparsity of images in the wavelet domain.  
+
+Recall from our earlier discussion that we can represent $I = W^{-1} \mathcal{F}$, where $\mathcal{F}$ is sparse. Hence we can write
+\begin{eqnarray}
+\mathbf{P} & = & \mathbf{M}W^{-1}\mathcal{F}
+\end{eqnarray}
+
+Let $\mathbf{R} = \mathbf{M}W^{-1}$.  Remember that the random masks applied to the camera are \textit{known}, i.e. $\mathbf{M}$ is known. The inverse wavelet transform matrix $W^{-1}$ of course known.  Hence $\mathbf{R}$ is known. We can therefore write
+\begin{eqnarray}
+\mathbf{P} & = & \mathbf{R}\mathcal{F}
+\end{eqnarray}
+In other words, we are expressing the compressed measurements $\mathbf{P}$ as a sparse combination of the columns in a dictionary matrix $\mathbf{R}$.
+
+To recover the image $I$ from the $K \times 1$ compressed measurement vector $\mathbf{P}$, it is sufficient to recover the $N \times 1$ sparse vector $\mathcal{F}$, since $I = W^{-1}\mathcal{F}$. We can do so using the sparse recovery technique we discussed in the context of dictionary-based representations, which we recalled above:
+\begin{eqnarray}
+\hat{\mathcal{F}} & = & \arg\min_{\mathcal{F}} \|\mathbf{P} - \mathbf{R}\mathcal{F}\|_2^2 + \lambda \|\mathcal{F}\|_1
+\end{eqnarray}
+
+The complete image can now be recovered as $I = W^{-1}\hat{\mathcal{F}}$. This is the basic concept behind compressive sensing.
+
+We have managed to come up with a solution that enables Huygens to send far fewer numbers (only $K$) than the size of the image itself ($N$ pixels) and still recover the image. Huygens can now use the conserved battery to take more pictures.  We have thus rescued NASA's space exploration program!!
+
+Having achieved these lofty goals, let us now return to a more mundane issue: homework problems.
+\end{enumerate}
+
+
+\subsection{$\ell_1$ minimization}
+
+In this problem we give you compressed measurements from an image taken by Cassini (not Huygens).  We also give you the ``measurement matrix'' $\mathbf{R}$. You must recover the full image. (Note: we are referring to $\mathbf{R}$ in the above equations as the measurement matrix; more conventionally $\mathbf{M}$ would be called the measurement matrix).
+\\
+\\
+You have been provided of the original image (\texttt{hw3material/problem3}). This is only for reference, to compute error; \textbf{we will not use it in recovery computations}. It is a $128 \times 128$ image with a total of 16384 pixels. Note that the sparse wavelet transform $\mathcal{F}$ of the image will also have 16384 components, although most of them will be very small or 0. 
+
+In the directory \texttt{hw3materials/problem3/data} you also can find  three sets of compressed measurements \texttt{P1024.csv}, \texttt{P2048.csv} and \texttt{P4096.csv}, and their corresponding measurement matrices \texttt{R1024.csv},  \texttt{R2048.csv} and  \texttt{R4096.csv}.  In each case the numbers represent the  number of measurements. Thus \texttt{P1024.csv} contains a $1024 \times 1$ vector, representing 1024 one-pixel measurements, and \texttt{R1024.csv} is a $1024 \times 16384$ matrix that gives the linear transform from the 16384-component sparse transform $\mathcal{F}$ to the measurement vector in \texttt{P1024}. In the same directory you will also find the file named \texttt{S.csv}. This file is required by matlab for image reconstruction, and is not part of the actual recovery algorithm. 
+\\
+\\
+You are required to use the sparse recovery procedure to recover $\mathcal{F}$ for each of these three measurements, and to reconstruct the image.
+
+
+\begin{enumerate}
+\item For each of the three measurements, solve 
+\begin{eqnarray}
+\hat{\mathcal{F}} & = & \arg\min_{\mathcal{F}} \|\mathbf{P} - \mathbf{R}\mathcal{F}\|_2^2 + \lambda \|\mathcal{F}\|_1
+\end{eqnarray}
+
+We recommend setting $\lambda = 100$, although you may also try other values. We included a matlab implementation of a least-squares $\ell_1$ (\texttt{l1\_ls.m}) solver
+from Stephen Boyd (\texttt{hw3materials/problem3}). Note however that this is not the best algorithm; there are other better algorithms for $\ell_1$ minimization. The \href{http://sparselab.stanford.edu/}{Stanford sparselab} page has several nice solvers. You may try these; some of them should give you better results. 
+
+If you are using Python, we would recommend to use Lasso from Sklearn. However, feel free to explore other solvers written in Python. 
+
+For each of the three measurements, reconstruct the original image using the recovered $\mathcal{F}$. You can do so using matlab through the following commands:
+\begin{lstlisting}
+S = csvread('S.csv');
+Irec = waverec2(F',S,'db1');
+\end{lstlisting}
+
+or if you are using Python, use the \texttt{F2Coeffs.py} in the handout code. 
+
+Compute the error $E = \sum_{i,j} (I(i,j) - I_{rec}(i,j))^2$, where $I(i,j)$ and $I_{rec}(i,j)$ are the $(i,j)$th pixel value in the original and recovered image respectively.
+
+\ul{You will be required to include your errors of three measurements and show the reconstructed image in your report (specify which solver and what parameters do you use), and submit your code.} Submissions that report lower error will obtain better scores for this problem, so it is in your benefit to explore.
+\end{enumerate}
+
+
+\subsection{Iterative Hard Thresholding}
+In the previous part we solved the problem of sparse recovery as one of $\ell_1$ minimization.  We do so since it is well known that minimizing the $\ell_1$ norm also often minimizes the $\ell_0$ norm of the solution; however our actual objective in sparse recovery is to find a solution that has minimal $\ell_0$ norm, i.e. the smallest number of non-zero elements! Often, the optimal $\ell_1$ minimized solution will differ significantly (and can be significantly worse) than the optimal $\ell_0$ minimized solution.
+\\
+\\
+In this part of the problem we will solve the alternate optimization problem:
+\begin{eqnarray}
+\hat{\mathcal{F}} & = & \arg\min_{\mathcal{F}} \|\mathbf{P} - \mathbf{R}\mathcal{F}\|_2^2~~~~{\rm such~that}~~\|\mathcal{F}\|_0 \leq K
+\end{eqnarray}
+where $K$ is the level of sparsity desired in $\mathcal{F}$. This is clearly an $\ell_0$ \textit{constrained} optimization problem. $\|\mathcal{F}\|_0 \leq K$ specifies a \textit{feasible set}, which is the set of all vectors that have no more than $K$ non-zero elements (note that this is a non-convex set). Recall from our lecture on optimization that we can use the method of projected gradients for this problem.
+\\
+\\
+The gradient of $ \|\mathbf{P} - \mathbf{R}\mathcal{F}\|_2^2$ w.r.t $\mathcal{F}$ is given by
+\begin{eqnarray}
+\nabla_{\mathcal{F}}  \|\mathbf{P} - \mathbf{R}\mathcal{F}\|_2^2 & = & -\mathbf{R}^\top (\mathbf{P} - \mathbf{R}\mathcal{F})
+\end{eqnarray}
+Representing the $n^{\rm th}$ iterate in an iterative estimate of $\mathcal{F}$ by $\mathcal{F}^n$,  the projected gradient descent algorithm to estimate $\mathcal{F}$ would be given by
+\begin{eqnarray}
+\mathcal{F}_{unconstrained}^{n+1} & = & \mathcal{F}^n + \eta \mathbf{R}^\top (\mathbf{P} - \mathbf{R}\mathcal{F}^n) \\
+\mathcal{F}^{n+1} &= & P_K(\mathcal{F}_{unconstrained}^{n+1})
+\end{eqnarray}
+where $\eta$ is a step size. The operator $P_K$ in the second step of the algorithm simply sets the $N-K$ smallest elements (in magnitude) of $\mathcal{F}_{unconstrained}^{n+1}$ to zero, forcing it to be a $K-sparse$ vector.
+\\
+\\
+The second step in the above iteration is the ``projection'' step of the projected gradient algorithm.  It provably \textit{projects} $\mathcal{F}_{unconstrained}^{n+1}$ onto the feasible set for $\mathcal{F}$, namely the set of all $K$-sparse vectors.
+\\
+\\
+The above iteration is guaranteed to converge under specific conditions on $\mathbf{R}$, $K$ and $\eta$. This is captured nicely in the following algorithm known as ``\textbf{Iterative Hard Thresholding}'' (IHT), proposed by Tom Blumensath.
+
+\newpage
+
+\begin{enumerate}
+\item [] \textit{\textbf{Iterative Hard Thresholding}}
+
+\textbf{As a first step}, the IHT algorithm assumes that the individual columns of the measurement matrix $\mathbf{R}$ are vectors of norm $\leq 1$. So, if this condition is not satisfied, multiply ${\bf R}$ by a scalar $\alpha$ such that the norm of the columns of $\alpha {\bf R}$ is less than 1. Note that it is NOT convenient that $\alpha$ is too small. Determine the largest value of $\alpha$ to reach the condition.
+
+The IHT algorithm then performs iterations of the following computation:
+\begin{enumerate}
+\item [1.] Choose a maximum sparsity level $K$ for your solution.
+\item [2.] Initialize $\mathcal{F}_{unconstrained}^{0} = 0$. (Alternately, you could set it to any random value).
+\item [3.] Iterate:
+\[
+\mathcal{F}^{n+1} = P_K(\mathcal{F}^n + \mathbf{R}^\top (\mathbf{P} - \mathbf{R}\mathcal{F}^n))
+\]
+until the error $\|\mathbf{P} - \mathbf{R}\mathcal{F}\|_2^2$ converges, or the maximum number of iterations is achieved.
+\item [4.] The final output is $\hat{\mathcal{F}} = \mathcal{F}_{conv}$, where $\mathcal{F}_{conv}$ is the final estimate derived from the previous step.
+\end{enumerate}
+
+\item [] What you need to do are as follows.
+\begin{enumerate}
+\item [i.] Implement the IHT algorithm. \ul{Include your IHT implementation to your code as a single file (iht.m or iht.py)}
+\item [ii.] For each of the three measurements in the previous problem, find the estimate $\hat{\mathcal{F}}$ and reconstruct the original image using the recovered $\hat{\mathcal{F}}$, as you already did it. Compute the error $E = \sum_{i,j} (I(i,j) - I_{rec}(i,j))^2$, where $I(i,j)$ and $I_{rec}(i,j)$ are the $(i,j)$th pixel value in the original and recovered image respectively.  \ul{Include these errors, show the reconstructed images in your report, and submit your code}. 
+
+\textbf{Note}: In this problem, use $K = round(max(\frac{M}{4},\frac{N}{10}))$, where $M$ is the number of measurements, and $N$ is the size of the image. Set the maximum number of iterations to 500.
+
+\textbf{Note 2}: If you need to redefine the dictionary as $\alpha {\bf R}$, then, you will find $\mathcal{F}$ such that ${\bf P} \approx \alpha{\bf R} \mathcal{F}$. However, you need to find $\mathcal{F}$ such that  ${\bf P} \approx {\bf R} \mathcal{F}$ . 
+
+\item [iii.] You should find that the IHT solution is considerably worse than the $\ell_1$ minimization result. Can you give any intuition as to why this is so? \ul{Include your analysis to your report.}
+\end{enumerate}
+\end{enumerate}
+
+% \subsection*{Submission Instructions}
+% \subsubsection*{Problem 1a}
+% You are going to recover images for $3$ different measures of $P$ and $R$. In the \texttt{data} folder for Problem 1, you will find three folders $1639$, $2048$, $4096$. Each of these folders have three variable $P$, $R$ and $S$ which you need for solving the problem. 
+
+% \begin{enumerate}
+% \item Write a function \texttt{p1a\_getF(P, R, lambda)} which returns the recovered $\mathcal{F}$. It takes $P$, $R$ and $\lambda$ as inputs. 
+% \item Write a main script \texttt{p1a\_Main.m}, which loads matrices, pass them to \texttt{p1\_getF()} function and then reconstruct the image using the recovered $\mathcal{F}$. Running this script should get the job done. Show the recovered image, compute errors and any other necessary thing.  
+% \item In your report, report the reconstruction error.
+% \item Submit the reconstructed image in \texttt{result} folder of problem 1. You should submit both an image file as well as the actual recovered image matrix, $Irec$. Name them as \texttt{I\_1639a.png} and \texttt{I\_1639a.mat} respectively. 
+% \item The image recovery and reconstruction error needs to be done for all three measurements, 1639, 2048 and 4096. Name your recovered image file accordingly.
+% \end{enumerate}
+
+% \subsubsection*{Problem 1b}
+% You are going to recover images for $3$ different measures of $P$ and $R$. In the \texttt{data} folder for Problem 1, you will find three folders $1639$, $2048$, $4096$. Each of these folders have three variable $P$, $R$ and $S$ which you need for solving the problem. 
+
+% \begin{enumerate}
+% \item Write a function \texttt{iht(P, R, K, niter )} which implements IHT algorithm. It takes as input $P$, $R$, $K$ (sparsity level), $n_{iter}$ = number of iterations as inputs.  
+% \item Write a main script \texttt{p1b\_Main.m}, which does rest of the stuff, similar to \texttt{p1a\_Main.m}.  
+% \item Use $n_{iter} = 200$. 
+% \item In your report, report the reconstruction error for all 3 measurements. 
+% \item Submit the recovered image for all three measurements in \texttt{result} folder of problem 1. Name your recovered image file properly, \texttt{I\_1639b.png} etc.  
+% \end{enumerate}
+
+
+
+
+
+
+\iffalse
+
+\section{Source Separation using ICA}
+
+%\subsection{Synthetic case}
+
+In this problem, you have to implement your own version of ICA and apply it to source separation.\\
+You are given 2 audio recordings, \texttt{sample1.wav} and \texttt{sample2.wav}. These can be found in the directory
+\texttt{hw2materials/problem3.}
+
+These recording were generated mixing two different audios. Your objective is to reconstruct the original sounds using ICA. Do the following steps:
+\begin{enumerate}
+
+    \item Implement your own version of ICA based on FOBI (Freeing Fourth Moments) method that we discussed in class. Write a function \texttt{ica} which receives as input a $2 \times N$ matrix and outputs a $2 \times N$ matrix where its rows are the extracted independent components. \ul{Submit your code}.
+    
+    \item Read the file \texttt{sample1.wav} and extract the audio signal \texttt{s1}. This should be a vector with 132,203 components. Read the file \texttt{sample2.wav} obtaining the signal \texttt{s2}. Both \texttt{s1} and \texttt{s2} have the same size. Transpose and concatenate these signals generating a matrix ${\bf M}$ with 2 rows and 132,203 columns.\\
+    Apply the function \texttt{ica} on the matrix ${\bf M}$ and using the Matlab function \texttt{audiowrite}, save the components generated as \texttt{source1.wav} and \texttt{source2.wav} respectively. Don't forget ICA does not consider scale factors, so you may need to boost or decrease the resulting signal. \ul{Submit files \texttt{source1.wav} and \texttt{source2.wav}.}
+    \item If ${\bf H}$ is a $2 \times N$ where its rows correspond to the output of \texttt{ica}, then we can consider that
+    $$ {\bf M} = A {\bf H}$$
+    In this case $A$ is the mixing matrix which produces our observation ${\bf M}$. Compute the $2 \times 2$ matrix for this case. \ul{Submit $A$ as \texttt{mixing\_matrix.csv}.} 
+\end{enumerate}
+
+\fi
+
+
+

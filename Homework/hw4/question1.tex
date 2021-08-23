@@ -1,0 +1,49 @@
+\section{Logistic Regression and Maximum Likelihood Estimation}
+
+%\subsection{Non-Negative Matrix Factorization}
+
+\subsection{Why logistic regression?}
+
+In logistic regression we attempt to predict a binary random variable $y$ (ie $y$ can be either 0 or 1) as a function of a vector ${\bf x}$. 
+
+An alternative approach is to consider a linear model, this is
+\begin{eqnarray}
+y & = & \beta^\top {\bf x} + \varepsilon
+\end{eqnarray}
+where $\varepsilon$ is a random variable with 0 mean. In this case, we don't consider that ${\bf x}$ is a random variable.
+\begin{enumerate}
+    \item Show that for any binary random variable $y$, if  $\mathbb{E}(y) = p$, then $Var(y) = p(1-p)$
+    \item Show that, using this model, $\mathbb{E}(y) = \beta^\top {\bf x}$
+    \item Using the proposed model, find an expression for $Var(\varepsilon)$ which depends on ${\bf x}$. 
+\end{enumerate}
+
+\textbf{Note:} In general, we don't use a linear model to predict a binary variable, because, as it is shown in this problem, the variance of the error depends on the input ${\bf x}$, which is an assumption that we want to avoid.
+
+
+\subsection{Maximum Likelihood of Logistic Regression}
+
+Given a sample $\{({\bf x}_1,y_1),..., ({\bf x}_n,y_n)\}$, using the logistic regression model, the likelihood of is given by 
+\begin{eqnarray}
+\mathcal{L} & = & \prod_{i=1}^n p_i^{y_i} \cdot (1-p_i)^{1-y_i}
+\end{eqnarray}
+where ${\bf x}_i \in \mathbb{R}^N$, $p_i = F(\beta^\top {\bf x}_i)$, and $F(x) = \frac{\exp(x)}{1+\exp{x}}$.
+
+Show that the value of $\beta$ that maximizes $\mathcal{L}$ must satisfy the following equation
+\begin{eqnarray}
+\sum_{i=1}^n y_i {\bf x}_i & = &  \sum_{i=1}^n F(\beta^\top {\bf x}_i) {\bf x}_i
+\end{eqnarray}
+
+
+\subsection{Maximum Likelihood Estimator}
+Let $X$ be a random variable. We say that $X$ is distributed as $\text{Uniform}(a,b)$, noted $X \sim \text{Uniform}(a,b)$, if its density function is given by
+\begin{eqnarray}
+f_X(x) & = & \left\{ \begin{array}{ll} \frac{1}{b-a} & \text{ if } x \in [a,b]
+\\ 0 & \text{ otherwise} \end{array} \right. \end{eqnarray}
+
+
+Consider an independent identically distributed sample $\{ x_1, ..., x_n\}$, such that
+\begin{eqnarray}
+x_i & \sim & \text{Uniform}(-\theta, \theta)
+\end{eqnarray}
+where $\theta$ is a positive unknown parameter. \\
+Find an expression for the Maximum Likelihood Estimator of $\theta$ in terms of the sample $\{ x_1, ..., x_n\}$.

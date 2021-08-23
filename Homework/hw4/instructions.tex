@@ -1,0 +1,89 @@
+\section{Matlab Instructions}
+
+\subsection{Computing the spectrogram}
+Get the matlab file \verb|stft.m| in folder \texttt{\textbf{hw1materials}}.\\
+\verb|stft.m| computes the complex spectrogram of a signal.\\
+You can read a wav file into matlab as follows.
+\begin{lstlisting}
+[s,fs] = audioread('filename');
+s = resample(s,16000,fs);
+\end{lstlisting}
+
+Above, we resample the signal to a standard sampling rate for convenience. Next, we can compute the complex short-time Fourier transform of the signal, and the magnitude spectrogram from it, as follows. Here we use 2048 sample windows, which correspond to 64ms analysis windows. Adjacent frames are shifted by 256 samples, so we get 64 frames/second of signal.
+
+To compute the spectrogram of a recording, e.g. the music, perform the following.
+\begin{lstlisting}
+spectrum = stft(s',2048,256,0,hann(2048));
+music = abs(spectrum);
+sphase = spectrum./(abs(spectrum)+eps);
+\end{lstlisting}
+This will result in a 1025-dimensional (rows) spectrogram, with 64 frames(columns) per second of signal.
+\\
+\\
+Note that we are also storing the phase of the original signal. We will need it later for reconstructing the signal. We explain how to do this later. The \textbf{eps} in this formula ensures that the denominator does not go to zero.
+\\
+\\
+You can compute the spectra for the notes as follows. The following script reads the directory and computes spectra for all notes in it.
+\begin{lstlisting}
+notefolder = 'notes15/';
+listname = dir([notesfolder '*.wav']);
+notes = [ ];
+for k = 1:length(listname)
+    [s,fs] = audioread([notesfolder listname(k).name]);
+    s = s(:,1);
+    s = resample(s,16000,fs);
+    spectrum = stft(s',2048,256,0,hann(2048));
+    %Find the central frame
+    middle = ceil(size(spectrum,2)/2);
+    note = abs(spectrum(:,middle));
+    %Clean up everything more than 40db below the peak
+    note(find(note < max(note(:))/100)) = 0;
+    note = note/norm(note);
+    %normalize the note to unit length
+    notes = [notes,note];
+end
+\end{lstlisting}
+The ``\texttt{notes}'' matrix will have as many columns as there are notes (15 in our data). Each column represents a note. The notes will each be represented by a 1025 dimensional column vector.
+
+\subsection{Reconstructing a signal from a spectrogram}
+
+The recordings of the complete music can be read just as you read the notes. To convert it to a spectrogram, do the following. Let \textbf{reconstructedmagnitude} be the reconstructed magnitude spectrogram from which you want to compute a signal. In our homework we get many variants of this. To recover the signal we will use the \textbf{sphase} we computed earlier from the original signal.
+\begin{lstlisting}
+reconstructedsignal = stft(reconstructedmagnitude.*sphase,2048,256,0,hann(2048));
+\end{lstlisting}
+
+
+
+
+
+%==================================================================================================================================
+%==================================================================================================================================
+\newpage
+\section{Submission Guide}
+
+\subsection{Linear Algebra}
+Please submit all results for this part in ``Report\underline{ }YourAndrewID.pdf'' in you submission
+\subsection{Music Transcription Problem}
+\textbf{2.1 Projection}\\
+\\
+The ``2.1'' subdirectory has a template file called Run\underline{ }problem21.m. Write your code into this script. There are instructions within the script on how to save your outputs. We repeat the instructions below.\\
+\\
+The scripts must be written so that we can simply run Run\underline{ }problem21.m from matlab within the directory, without any additional commands. If we cannot run the program, we cannot score you.\\
+\\
+1. Your solution will give you single ``score'' matrix $\mathbf{W}$. Save this as a single file named ``problem211.dat''
+\\
+\\
+2. For this part, the synthesized music must be saved as ``problem212\underline{ }synthesis.wav'' within the ``results'' directory.\\
+\\
+\textbf{2.2 Optimization and non-negative decomposition}
+\\
+\\
+1. For this part, return the solution in ``Report\underline{ }YourAndrewID.pdf'' in your submission.\\
+\\
+2. For this part, store the final $\mathbf{W}$ for each $\eta$ value in a text file called ``problem222\underline{ }eta\underline{ }xxx.dat'' where xxx is actual $\eta$ value. E.g. for $\eta = 0.01$, xxx will be ``0.01''. Plot the plot of $E$(total error) vs. iterations for each $\eta$ in a file called ``problem222\underline{ }eta\underline{ }xxx\underline{ }errorplot.png'', where xxx is the $\eta$ value. Also plot the $\eta$ vs. $E$ as a bar plot and save it in ``problem222\underline{ }eta\underline{ }vs\underline{ }E.png''.\\
+\\
+3. For this part, save the synthesized music in the ``results'' directory in a file called ``polyushaka\underline{ }syn.wav''\\
+\\
+\textbf{2.3 Linear Transformation}\\
+\\
+Your solution should include final magnitude spectrogram of audio D. Save this as a single file named ``problem23.mat''. Also save audio D as ``problem23\underline{ }audio.wav'' within the ``result'' directory. 

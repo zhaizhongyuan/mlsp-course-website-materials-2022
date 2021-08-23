@@ -1,0 +1,145 @@
+\section{Music Transcription}
+
+\subsection{Projection}
+ The song ``Polyushka Poly'' is played on the harmonica, the file name of the audio recording is  \texttt{\textbf{polyushka.wav}}, which can be found in the folder \texttt{\textbf{hw1materials}}. It has been downloaded from YouTube with permission from the artist.
+\\
+\\
+A set of notes from a harmonica can be found in folder \texttt{\textbf{hw1materials/note15}}. You are required to transcribe the music. For transcription you must determine how each of the notes is played to compose the music.
+\\
+\\
+You need to compute the spectrogram of the music file using your language/toolbox of choice, such as python (Librosa) or Matlab. First, read and load the audio file at 16000 Hz sample rate. 
+
+% If you are using Matlab, you can use the following command:
+% \begin{lstlisting}
+% [s,fs] = audioread('filename');
+% s = resample(s, 16000,fs);
+% \end{lstlisting}
+
+If you are using Python, you can use Librosa to load the wav file as follows (we also recommend using the \texttt{numpy} package for matrix operations below if you use python):
+
+\begin{lstlisting}
+import librosa
+audio, sr = librosa.load(filename, sr = 16000)
+\end{lstlisting}
+
+Next, we can compute the complex Short-Time Fourier Transform (STFT) of the signal \textit{s} and its magnitude spectrogram. Use 2048 sample windows, which correspond to 64 ms analysis windows; overlap/hop length of 256 samples to 64 frames by second of signal. Different toolboxes should provide similar spectrograms. If you are using the Python Librosa library, you can use the following command:
+
+
+% \begin{lstlisting}
+% spectrogram = stft(s',2048,256,0,hann(2048));
+% M = abs(spectrogram);
+% phase = spectrogram./(M + eps);
+% \end{lstlisting}
+
+\begin{lstlisting}
+spectrogram = librosa.stft(audio, n_fft=2048, hop_length=256, center=False, win_length=2048)
+M = abs(spectrogram)
+phase = spectrogram/(M + 2.2204e-16)
+\end{lstlisting}
+
+In this case, ${\bf M}$ represents the music file and should be a matrix of $1025 \times 8869$, where the rows correspond to the frequencies and the columns to time. A visualization (Librosa - specshow) of this matrix (spectrogram) should look like the following figure.
+\begin{center}
+\includegraphics[trim={3cm 0 0 0},clip,scale=0.32]{figs/spectrogram.jpg}
+\end{center}
+To represent notes, you also need to compute the spectrogram of each note file. However, unlike the music file, we need to represent the matrix just as a one column vector. Hence, we can choose only one vector, or compute the mean of the matrix across time, etc. In this example, we select the middle column:
+%[s, fs] = audioread('note_file');
+%s = s(:,1);
+%s = resample(s,16000,fs);
+%spectrogram = stft(s', 2048, 256, 0, hann(2048));
+% # find central frame
+% middle = ceil(size(spectrogram,2)/2);
+% note = abs(spectrogram(:,middle));
+\begin{lstlisting}
+
+# n is the spectrogram of the note 
+import math
+middle = n[:, int(math.ceil(n.shape[1]/2))]
+
+\end{lstlisting}
+To focus on the most relevant frequencies, we can clean up and normalize the note as follows:
+\begin{lstlisting}
+middle[middle < (max(middle)/100)] = 0
+\end{lstlisting}
+
+\newpage
+
+% note(find(note < max(note(:))/100)) = 0;
+Finally, you need to normalize this vector as follows,
+% note = note/norm(note);
+\begin{lstlisting}
+middle = middle/np.linalg.norm(middle) # import numpy as np  
+\end{lstlisting}
+
+
+\begin{enumerate}
+    \item Compute the joint contribution of all notes to the entire music. \\ 
+    Mathematically, if $\mathbf{N} = [N_{1}, N_{2}, ...]$ is the note matrix where the individual columns are the notes, find the matrix $\mathbf{W}$ such that $\mathbf{N}\mathbf{W}\approx\mathbf{M}$, or that produce a small error $||\mathbf{M}-\mathbf{NW}||_{F}^{2}$. The $i_{th}$ row of $\mathbf{W}$ is the transcription of the  $i_{th}$ note. \underline{Submit the matrix ${\bf W}$ as  \texttt{problem1.csv} together with your code.}
+    
+    \item Recompose the music by ``playing'' each note according to the transcription you found in last question. \\ Set all negative elements in $W$ to zero and compute $\hat{M} = \mathbf{N}W$. \ul{Report the value of} $||\mathbf{M}-\hat{\mathbf{M}}||_{F}^{2} =  \sum_{i,j}(\mathbf{M}_{i,j}-\hat{\mathbf{M}}_{i,j})^{2}$ \ul{and submit the recomposed music named as \texttt{resythensized\_proj.wav} file.}
+    
+    To recover the signal from the reconstructed spectrogram $\hat{{\bf M}}$ we need to use the phase matrix we computed earlier from the original signal. Combine both and compute the Inverse-STFT to obtain a vector and then write them into a wav file. To compute the STFT and then write the wav file you can use the following python command:
+    \begin{lstlisting}
+    signal_hat = librosa.istft(M_hat*phase, hop_length=256, center=False, win_length=2048)
+    librosa.output.write_wav("resynthensized_proj.wav", signal_hat, sr=16000)
+    \end{lstlisting}
+        % signal_hat = stft(np.dot(M_hat, phase), 2048, 256, 0, hann(2048))
+    % audiowrite('wavfilename',signal_hat,16000)
+\end{enumerate}
+
+
+\subsection{Optimization and non-negative decomposition}
+
+A projection of the music magnitude spectrogram (which are non-negative) onto a set of notes will result in negative weights for some notes. To explain this, let \textbf{M} be the (magnitude) spectrogram of the music, which is a matrix of size $D\times T$, where \textit{D} is the size of the Fourier Transform and \textit{T} is the number of spectral vectors in the signal. Let \textbf{N} be a matrix of notes of size $D\times K$, where \textit{K} is the number of notes and each column \textit{D} is the magnitude spectral vector of one note.
+
+Conventional projection of \textbf{M} onto the notes \textbf{N} computes the following approximation:
+$$\hat{\mathbf{M}} =\mathbf{N}\mathbf{W} $$
+where $||\mathbf{M}-\hat{\mathbf{M}}||_{F}^{2} =  \sum_{i,j}(\mathbf{M}_{i,j}-\hat{\mathbf{M}_{i,j}})^{2}$ is minimized. Here, $||\mathbf{M}-\hat{\mathbf{M}}||_{F}$ is known as the Frobenius norm of $\mathbf{M} - \hat{\mathbf{M}}$, where $\mathbf{M}_{i,j}$ is the $(i,j)^{th}$ entry of \textbf{M} and $\hat{\mathbf{M}}_{i,j}$ is similarly the $(i,j)^{th}$ entry of $\hat{\textbf{M}}$. We will use later the definition of the Frobenius norm.
+\\
+\\
+$\hat{\textbf{M}}$ is the projection of \textbf{M} onto \textbf{N}. Moreover, \textbf{W} is given by $\mathbf{W} = pinv(\mathbf{N})\mathbf{M}$ and \textbf{W} can be viewed as the transcription of \textbf{M} in terms of the notes in \textbf{N}. So, the $j^{th}$ column of $\mathbf{M}$, which we represent as $M_{j}$ is the spectrum in the $j^{th}$ frame of the music, which are approximated by the notes in \textbf{N} as follows:
+
+$$\mathbf{M_{j}} = \sum_{i}\mathbf{N}_i\mathbf{W_{i,j}}$$
+\\
+where $\mathbf{N_i}$, the $i^{th}$ column of \textbf{N} represents the $i^{th}$ note and $\mathbf{W_{i,j}}$ is the (contribution) weight assigned to the $i^{th}$ note in composing the $j^{th}$ frame of the music.
+\\
+\\
+The problem is that in this computation, we will frequently find $\mathbf{W}_{i,j}$ values to be negative. In other words, this model requires you to subtract some notes, since $\mathbf{W}_{i,j}\mathbf{N}_{i}$ will have negative entries.  Clearly, this is an unreasonable operation intuitively; when we actually play music, we never unplay a note (which is what playing a negative note would be).
+%If $\mathbf{W}_{i,j}$ is negative, this is equivalent to subtracting note the weighted note $|\mathbf{W}_{i,j}|\mathbf{N}_{i}$ in the $j^{th}$ frame.
+\\
+\\
+Also, $\mathbf{\hat{M}}$ may have negative entries due to the values in \textbf{W}. In other words, our projection of $\mathbf{M}$ onto the notes in $\mathbf{N}$ can result in negative spectral magnitudes in some frequencies at certain times. Again, this is meaningless physically -- spectral magnitudes cannot, by definition, be negative.
+\\
+\\
+Hence, we will compute the approximation $\mathbf{\hat{M}=NW}$ with the constraint that the entities of $\mathbf{W}$ must always be greater than or equal to 0, \textit{i.e.} they must be non-negative. To do so we will use a simple gradient descent algorithm which minimizes the error $|| \mathbf{M - NW}|| ^2_F$, subject to the constraint that all entries in $\mathbf{W}$ are non-negative.
+
+\begin{enumerate}
+
+\item \textbf{Computing a Derivative}\\ \\
+We define the following error function: \\
+$$E = \frac{1}{DT} ||\mathbf{M-NW}||^2_F,$$
+where $D$ is the number of dimensions (rows) in $\mathbf{M}$, and $T$ is the number of vectors (frames) in $\mathbf{M}$. \\
+\\
+\ul{Derive and write down the formula for $\frac{dE}{d\mathbf{W}}$.}
+\\
+\item \textbf{A Non-Negative Projection}\\ \\
+We define the following gradient descent rule to estimate $\mathbf{W}$. It is an iterative estimate. Let $\mathbf{W}^0$ be the initial estimate of $\mathbf{W}$ and $\mathbf{W}^n$ the estimate after $n$ iterations. \\
+We use the following project gradient update rule
+$$
+\hat{\mathbf{W}}^{n+1} = \mathbf{W}^n - \eta \frac{dE}{d\mathbf{W}} |_{\mathbf{W}^n}
+$$
+$$
+\mathbf{W}^{n+1} = \max (\hat{\mathbf{W}}^{n+1},0)
+$$
+where $\frac{dE}{d\mathbf{W}}|_{\mathbf{W}^{n}}$ is the derivative of E with respect to $\mathbf{W}$ computed at $\mathbf{W} = \mathbf{W}^{n}$, and $max(\mathbf{\hat{W}}^{n+1},0)$ is a \textit{component-wise} flooring operation that sets all negative entries in $\mathbf{\hat{W}}^{n+1}$ to 0.
+\\
+\\
+In effect, our \textit{feasible set} for values of $\mathbf{W}$ are $\mathbf{W}\succeq 0$, where the symbol $\succeq$ indicates that \textit{every} element of $\mathbf{W}$ must be greater than or equal to 0. The algorithm performs a conventional gradient descent update, and projects any solutions that fall outside the feasible set back onto the feasible set, through the \textit{max} operation.
+
+Implement the above algorithm. Initialize $\mathbf{W}$ to a matrix of all 0s. Run the algorithm for $\eta$ values $(100,1000,10000,100000)$. Run 1000 iterations in each case. Plot E as a function of iteration number n for all $\eta$s in a figure. \ul{Show  this plot with some analysis in the separate page, and submit the best final matrix $\mathbf{W}$ (which resulted in the lowest error) named as \texttt{problem2W.csv} with the code.}
+
+\item \textbf{Recreating the music}% (No points for this one)
+\\
+\\
+For the best $\eta$ (which resulted in the lowest error) recreate the music using this transcription as $\mathbf{\hat{M}=NW}$. Resynthesize the music from $\hat{M}$. What does it sound like? \ul{Submit the resynthesized music named as \texttt{resynthesized\_nnproj.wav} with the code.}%You may return the resynthesized music to impress us (although we won't score you on it).
+
+\end{enumerate}
