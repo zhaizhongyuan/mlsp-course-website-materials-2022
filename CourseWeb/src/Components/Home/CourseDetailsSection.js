@@ -48,7 +48,7 @@ export default function CourseDetailsSection() {
 						<strong className="text-indigo-600">Tuesday: </strong>
 						03:05 PM to 04:25 PM EST/EDT. <br /> 
 						<strong className="text-indigo-600">Thursday: </strong>
-						-03:05 PM to 04:25 PM EST/EDT. <br /> 
+						--03:05 PM to 04:25 PM EST/EDT. <br /> 
 						</p>
 					</div>
 				</div>
