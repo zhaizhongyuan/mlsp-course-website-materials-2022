@@ -43,12 +43,21 @@ export default function CourseDetailsSection() {
 				</div>
 				<div className="space-y-12 mb-12">
 					<div className="space-y-5 sm:space-y-4 md:max-w-xl lg:max-w-3xl xl:max-w-none">
-						<h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">Class Times</h2>
+						<h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">Class Times & Locations</h2>
 						<p className="text-xl text-gray-500">
 						<strong className="text-indigo-600">Tuesday: </strong>
 						03:05 PM to 04:25 PM EST/EDT. <br /> 
 						<strong className="text-indigo-600">Thursday: </strong>
-						--03:05 PM to 04:25 PM EST/EDT. <br /> 
+						03:05 PM to 04:25 PM EST/EDT. <br /> 
+						<strong className="text-indigo-600">In  Person Location: </strong>
+						Doherty Hall (DH) A302, at basement one). <br /><br />
+						<strong className="text-indigo-600">Zoom ID:</strong> 984 6390 8291 <br /> 
+						<strong className="text-indigo-600">Passcode:</strong> see at piazza as well as the zoom link (no passcode needed) <br /> 
+						
+						<br />
+						This course will be taught in person. However, in the event that the course is moved online due to covid, we will continue to deliver lectures via zoom. 
+						In the event that an instructor is unable to deliver a lecture in person, we will broadcast that lecture over zoom or, in extreme situations, expect you to view pre-recorded lectures from prior semesters. 
+						You will be notified through piazza should any of these eventualities arise. The zoom details for this course are as below. <br /> 
 						</p>
 					</div>
 				</div>
@@ -58,7 +67,7 @@ export default function CourseDetailsSection() {
 						<p className="text-xl text-gray-500">
 							We think collaboration between the teaching staff and students is really important. 
 							We use Piazza to answer questions and release important information. 
-							You can find our Piazza course at (TBA). 
+							You can find our Piazza course at https://piazza.com/class/ksset4cralds5. 
 							Please note, you have to authenticate with your Andrew ID!
 						</p>
 					</div>
