@@ -49,8 +49,8 @@ export default function CourseDetailsSection() {
 						03:05 PM to 04:25 PM EST/EDT. <br /> 
 						<strong className="text-indigo-600">Thursday: </strong>
 						03:05 PM to 04:25 PM EST/EDT. <br /> 
-						<strong className="text-indigo-600">In  Person Location: </strong>
-						Doherty Hall (DH) A302, at basement one). <br /><br />
+						<strong className="text-indigo-600">Location (in person): </strong>
+						Doherty Hall (DH) A302, at basement one. <br /><br />
 						<strong className="text-indigo-600">Zoom ID:</strong> 984 6390 8291 <br /> 
 						<strong className="text-indigo-600">Passcode:</strong> see at piazza as well as the zoom link (no passcode needed) <br /> 
 						
@@ -63,11 +63,12 @@ export default function CourseDetailsSection() {
 				</div>
 				<div className="space-y-12">
 					<div className="space-y-5 sm:space-y-4 md:max-w-xl lg:max-w-3xl xl:max-w-none">
-						<h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">Piazza</h2>
+						<h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">Piazza & Canvas</h2>
 						<p className="text-xl text-gray-500">
 							We think collaboration between the teaching staff and students is really important. 
 							We use Piazza to answer questions and release important information. 
-							You can find our Piazza course at https://piazza.com/class/ksset4cralds5. 
+							You can find our Piazza course at <a href="https://piazza.com/class/ksset4cralds5">here</a>. 
+							And you can find the assignments, quizzes as well as other auxiliary content on Canvas at <a href="https://canvas.cmu.edu/courses/24534">here</a>.
 							Please note, you have to authenticate with your Andrew ID!
 						</p>
 					</div>
