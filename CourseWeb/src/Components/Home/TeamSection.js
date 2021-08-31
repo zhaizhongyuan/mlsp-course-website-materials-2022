@@ -3,18 +3,22 @@ const people = [
 		name: 'Bhiksha Raj',
 		role: 'Professor',
 		imageUrl: '/images/bhiksha.jpg', //http://mlsp.cs.cmu.edu/people/bhiksha/index.php
+		email: "mailto:bhiksha@cs.cmu.edu"
 	},{
 		name: 'Charles Yusuf',
 		role: 'Teaching Assitant',
 		imageUrl: '/images/Charles.jpg',
+		email: "mailto:cyusuf@Africa.cmu.edu"
 	},{
 		name: 'Mohammed Danish',
 		role: 'Teaching Assitant',
 		imageUrl: '/images/Danish.jpg',
+		email: "mailto:mohamme2@andrew"
 	},{
 		name: 'Yinghao Ma',
 		role: 'Teaching Assitant',
 		imageUrl: '/images/yinghao.jpg',
+		email: "mailto:yinghaom@andrew"
 	}
 	// More people...
 ]
@@ -38,7 +42,7 @@ export default function TeamSection() {
 									<div className="space-y-2 xl:flex xl:items-center xl:justify-between">
 										<div className="font-medium text-lg leading-6 space-y-1">
 											<h3 className="text-white">{person.name}</h3>
-											<p className="text-indigo-400">{person.role}</p>
+											<p className="text-indigo-400"><a href={person.email}>{person.role}</a></p>
 										</div>
 
 
