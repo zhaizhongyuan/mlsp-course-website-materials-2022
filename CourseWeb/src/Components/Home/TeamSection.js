@@ -32,6 +32,8 @@ export default function TeamSection() {
 						<h2 className="text-3xl font-extrabold text-white tracking-tight sm:text-4xl">Meet the Instructors</h2>
 						<p className="text-xl text-gray-300">
 							We've put together a really awesome team this year and we're excited to get started!
+							<br /> Office hour and place: TBA
+					
 						</p>
 					</div>
 					<ul className="space-y-4 sm:grid sm:grid-cols-2 sm:gap-6 sm:space-y-0 lg:grid-cols-3 lg:gap-8">
