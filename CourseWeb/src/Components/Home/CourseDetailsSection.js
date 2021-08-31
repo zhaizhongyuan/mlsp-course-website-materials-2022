@@ -6,18 +6,24 @@ export default function CourseDetailsSection() {
 					<div className="space-y-5 sm:space-y-4 md:max-w-xl lg:max-w-3xl xl:max-w-none">
 						<h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">Grading</h2>
 						<p className="text-xl text-gray-500">
-						copied from last year. TBA actually. <br />
-						<strong className="text-indigo-600">Weekly quizzes: </strong> 25% <br />
+						<strong className="text-indigo-600">Mini quizzes: </strong> 24% <br />
 						<strong className="text-indigo-600">Homeworks: </strong> 50% <br />
-						<strong className="text-indigo-600">Project: </strong> 25% <br /><br />
-						We will have weekly quizzes that are released on Friday and due on the Sunday of the same weekend. 
-						They are meant to test your knowledge of the previous week's material as well as provide you guidance on what you should be studying for the upcoming week.
+						<strong className="text-indigo-600">Group project: </strong> 25% <br />
+						<strong className="text-indigo-600">Class participation: </strong> 1% <br /><br />
+						We will have weekly quizzes that are released on Friday and due on the <del>Sunday</del> Saturday night of the same weekend. 
+						They are meant to test your knowledge of the previous week's material as well as provide you guidance on what you should be studying for the upcoming week. 
+						Ten multiple-choice questions will be included in each quiz.
 						<br /><br />
-						We are currently planning to have five homework assignments, released at various points across the semester. 
-						The homeworks have been carefully designed to ensure that you not only understand the general use case of a technique (e.g., expectation maximization) but can also apply it creatively to an interesting problem (e.g., deblurring an image).
+						We are currently planning to have four (maybe five) homework assignments, released at various points across the semester. 
+						The homeworks have been carefully designed as mini projects to ensure that you not only understand the general use case of a technique (e.g., expectation maximization),
+						 but can also apply it creatively to an interesting problem (e.g., deblurring an image).
+						You will not catch up if you slack on any of them. So, please start early and feel free to ask for help :-)
 						<br /><br />
 						Finally, the project is an opportunity for you and your peers to utilize the variety of techniques we cover throughout the semester to solve a compelling issue in a novel way. 
-						More information will be released about all of this later in the semester.
+						Topics suggested Will be assigned early in course and each group should be well-prepared for a Video presentation (on Dec. 10 approx). 
+						The final evaluated is partly done by peer grading.
+						<br /><br />
+						Attendance as measured by responses to in-class polls. Alternately, viewership of Panopto videos for Kigali students.
 						</p>
 					</div>
 				</div>
