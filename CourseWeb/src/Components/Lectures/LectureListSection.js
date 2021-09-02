@@ -153,7 +153,7 @@ export default function LectureListSection() {
 										<td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{lecture.topic}</td>
 										<td className="px-6 py-4 whitespace-nowrap text-sm">
 											<a href={lecture.link} className="text-indigo-600 hover:text-indigo-900">
-												Download
+												{ lecture.link == "#" ? "#" : "Download" }
 											</a>
 										</td>
 									</tr>
