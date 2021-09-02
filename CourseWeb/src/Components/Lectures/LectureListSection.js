@@ -3,118 +3,146 @@ const lectures = [
 		topic: 'Introduction',
 		date: 'August 31, 2021',
 		link: '/ppt/Lecture1.Introduction.pdf'
+		, file: "Ture"
 	}, 
 	{
 		topic: 'Linear Algebra 1',
 		date: 'September 2, 2021',
 		link: '/ppt/Lec2 LinearAlgebra1.pdf'
+		, file: "Ture"
 	},
 	{
 		topic: 'Linear Algebra 2',
 		date: 'September 7, 2021',
 		link: '#'
+		, file: "Flase"
 	},{
 		topic: 'Optimization',
 		date: 'September 9, 2021',
 		link: '#'
+		, file: "Flase"
 	},{
 		topic: 'Deterministic Representations 1',
 		date: 'September 14, 2021',
 		link: '#'
+		, file: "Flase"
 	},{
 		topic: 'Data-Driven Representations 2',
 		date: 'September 16, 2021',
 		link: '#'
+		, file: "Flase"
 	},{
 		topic: 'Classification and Metaclassifiers',
 		date: 'September 21, 2021',
 		link: '#'
+		, file: "Flase"
 	},{
 		topic: 'Face Detection',
 		date: 'September 23, 2021',
 		link: '#'
+		, file: "Flase"
 	},
 	{
 		topic: 'Non-Negative Matrix Factorization',
 		date: 'September 28, 2021',
 		link: '#'
+		, file: "Flase"
 	},{
 		topic: 'Probability and Statistics',
 		date: 'September 30, 2021',
 		link: '#'
+		, file: "Flase"
 	},{
 		topic: 'Independent Component Analysis 1',
 		date: 'October 5, 2021',
 		link: '#'
+		, file: "Flase"
 	},{
 		topic: 'Independent Component Analysis 2',
 		date: 'October 7, 2021',
 		link: '#'
+		, file: "Flase"
 	},{
 		topic: 'Clustering',
 		date: 'October 12, 2021',
 		link: '#'
+		, file: "Flase"
 	},{
 		topic: 'Happy holiday !!!',
 		date: 'October 14, 2021',
 		link: '#'
+		, file: "Flase"
 	},{
 		topic: 'Dictionary Representations',
 		date: 'October 19, 2021',
 		link: '#'
+		, file: "Flase"
 	},{
 		topic: 'Guest Lecture: Compressed Sensing',
 		date: 'October 21, 2021',
 		link: '#'
+		, file: "Flase"
 	},{
 		topic: 'Regression and Prediction',
 		date: 'October 26, 2021',
 		link: '#'
+		, file: "Flase"
 	},{
 		topic: 'Linear Classifiers',
 		date: 'October 28, 2021',
 		link: '#'
+		, file: "Flase"
 	},{
 		topic: 'Expectation Maximization 1',
 		date: 'November 2, 2021',
 		link: '#'
+		, file: "Flase"
 	},{
 		topic: 'Expectation Maximization 1',
 		date: 'November 4, 2021',
 		link: '#'
+		, file: "Flase"
 	},{
 		topic: 'Factor Analysis',
 		date: 'November 9, 2021',
 		link: '#'
+		, file: "Flase"
 	},{
 		topic: 'Supervised Representations',
 		date: 'November 11, 2021',
 		link: '#'
+		, file: "Flase"
 	},{
 		topic: 'Hidden Markov Models 1',
 		date: 'November 16, 2021',
 		link: '#'
+		, file: "Flase"
 	},{
 		topic: 'Hidden Markov Models 2',
 		date: 'November 18, 2021',
 		link: '#'
+		, file: "Flase"
 	},{
 		topic: 'Non-Linear Dynamical Systems',
 		date: 'November 23, 2021',
 		link: '#'
+		, file: "Flase"
 	},{
 		topic: 'Happy Thanksgiving!',
 		date: 'November 25, 2021',
 		link: '#'
+		, file: "Flase"
 	},{
 		topic: 'Kalman Filtering 1',
 		date: 'November 30, 2021',
 		link: '#'
+		, file: "Flase"
 	},
 	{
 		topic: 'Kalman Filtering 2',
 		date: 'December 2, 2021',
 		link: '#'
+		, file: "Flase"
 	}
 ]
 export default function LectureListSection() {
@@ -153,7 +181,7 @@ export default function LectureListSection() {
 										<td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{lecture.topic}</td>
 										<td className="px-6 py-4 whitespace-nowrap text-sm">
 											<a href={lecture.link} className="text-indigo-600 hover:text-indigo-900">
-												{ lecture.link == "#" ? "#" : "Download" }
+												{ lecture.file == "Flase" ? "#" : "Download" }
 											</a>
 										</td>
 									</tr>
