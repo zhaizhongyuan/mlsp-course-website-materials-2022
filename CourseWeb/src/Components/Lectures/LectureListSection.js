@@ -7,7 +7,7 @@ const lectures = [
 	{
 		topic: 'Linear Algebra 1',
 		date: 'September 2, 2021',
-		link: '#'
+		link: '/ppt/Lec2 LinearAlgebra1.pdf'
 	},
 	{
 		topic: 'Linear Algebra 2',
