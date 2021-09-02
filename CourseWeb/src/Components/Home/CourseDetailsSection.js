@@ -58,7 +58,9 @@ export default function CourseDetailsSection() {
 						<strong className="text-indigo-600">Location (in person): </strong>
 						Doherty Hall (DH) A302, at basement one. <br /><br />
 						<strong className="text-indigo-600">Zoom ID:</strong> 984 6390 8291 <br /> 
-						<strong className="text-indigo-600">Passcode:</strong> see at piazza or the zoom link. <br /> 
+						<strong className="text-indigo-600">Passcode:</strong> see at piazza or use the <a href="https://cmu.zoom.us/j/98463908291?pwd=TUhDbFZCL2ZkM2tzRFN4ZG9YTHBUZz09" className="text-indigo-500 underline">zoom link</a>. <br /> 
+						
+						
 						
 						<br />
 						This course will be taught in person. However, in the event that the course is moved online due to covid, we will continue to deliver lectures via zoom. 
