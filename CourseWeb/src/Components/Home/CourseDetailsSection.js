@@ -10,7 +10,7 @@ export default function CourseDetailsSection() {
 						<strong className="text-indigo-600">Homeworks: </strong> 50% <br />
 						<strong className="text-indigo-600">Group project: </strong> 25% <br />
 						<strong className="text-indigo-600">Class participation: </strong> 1% <br /><br />
-						We will have weekly quizzes that are released on Friday and due on the <del>Sunday</del> Saturday night of the same weekend. 
+						We will have weekly quizzes that are released on Saturday 12:00 a.m. EST/EDT and due on the Sunday night 11:59 p.m. EST/EDT of the same weekend, 48 hours you have in total. 
 						They are meant to test your knowledge of the previous week's material as well as provide you guidance on what you should be studying for the upcoming week. 
 						Ten multiple-choice questions will be included in each quiz.
 						<br /><br />
