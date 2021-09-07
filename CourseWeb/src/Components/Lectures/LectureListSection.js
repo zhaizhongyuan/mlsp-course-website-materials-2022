@@ -12,7 +12,7 @@ const lectures = [
 		, file: "Ture"
 	},
 	{
-		topic: 'Linear Algebra 2',
+		topic: 'Linear Algebra 2.',
 		date: 'September 7, 2021',
 		link: '/ppt/Lec3  LinearAlgebra2.pdf'
 		, file: "True"
