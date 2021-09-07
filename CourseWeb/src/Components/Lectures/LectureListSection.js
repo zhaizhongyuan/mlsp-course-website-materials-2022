@@ -46,7 +46,7 @@ const lectures = [
 		topic: 'Independent Component Analysis 1',
 		date: 'October 5, 2021',
 		link: '#'
-=	},{
+	},{
 		topic: 'Independent Component Analysis 2',
 		date: 'October 7, 2021',
 		link: '#'
