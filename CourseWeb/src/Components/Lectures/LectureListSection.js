@@ -14,8 +14,8 @@ const lectures = [
 	{
 		topic: 'Linear Algebra 2',
 		date: 'September 7, 2021',
-		link: '#'
-		, file: "Flase"
+		link: '/ppt/Lec3 LinearAlgebra2.pdf'
+		, file: "True"
 	},{
 		topic: 'Optimization',
 		date: 'September 9, 2021',
