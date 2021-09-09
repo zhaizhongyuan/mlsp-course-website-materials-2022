@@ -10,11 +10,11 @@ const lectures = [
 		link: '/ppt/Lec2 LinearAlgebra1.pdf'
 	},
 	{
-		topic: 'Linear Algebra 2.',
+		topic: 'Linear Algebra 2',
 		date: 'September 7, 2021',
 		link: '/ppt/Lec3  LinearAlgebra2.pdf'
 	},{
-		topic: 'Optimization',
+		topic: 'Optimization .',
 		date: 'September 9, 2021',
 		link: '/ppt/Lec 4.zip'
 	},{
