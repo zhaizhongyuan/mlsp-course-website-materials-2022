@@ -16,7 +16,7 @@ const lectures = [
 	},{
 		topic: 'Optimization .',
 		date: 'September 9, 2021',
-		link: '/ppt/ppt.rar'
+		link: '/ppt/Lec4 with extension.rar'
 	},{
 		topic: 'Deterministic Representations 1',
 		date: 'September 14, 2021',
