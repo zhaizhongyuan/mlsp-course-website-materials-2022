@@ -4,7 +4,7 @@ const assignments = [
 	{
 		title: 'First Assignment',
 		description: 'Introduction, Linear Algebra, Optimization',
-		dueDate: '09/20/2021 at 11:59 PM EST',
+		dueDate: '09/21/2021 at 11:59 PM EST',
 		attachments: [
 			{
 				title: 'Writeup',
@@ -18,7 +18,7 @@ const assignments = [
 	},{
 		title: 'Second Assignment',
 		description: 'Data-Driven Representations, Boosting, Face Detection',
-		dueDate: '10/10/2021 at 11:59 PM EST',
+		dueDate: '10/11/2021 at 11:59 PM EST',
 		attachments: [
 			{
 				title: 'Writeup',
