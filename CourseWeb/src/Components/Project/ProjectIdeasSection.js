@@ -8,7 +8,7 @@ export default function ProjectIdeasSection() {
 				Below is a link to several project ideas compiled by the course staff. The ideas enumerated in the document are intentionally brief: we want you to be creative with it. If you have any questions about the ideas, feel free to reach out over Piazza. You do not have to use any of these ideas for your project, but they can act as a nice starting point as you and your team map out what you want to work on.
 			</p>
 			<p className="text-xl leading-7 text-gray-500 mb-4">
-				<a href="/" className="text-indigo-600">
+				<a href="/project/MLSP project topics 09_12_2021.pdf" className="text-indigo-600">
 					Download the list of project ideas here.
 				</a>
 			</p>
