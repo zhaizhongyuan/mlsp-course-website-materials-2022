@@ -12,7 +12,7 @@ export default function ProjectProposalSection() {
 			</p>
 			<p className="text-xl leading-7 text-gray-500 mb-4">
 				Below, we've enumerated several items that your proposal must include. Your submission must follow the&nbsp;
-				<a href="/" className="text-indigo-600">
+				<a href="https://nips.cc/Conferences/2020/PaperInformation/StyleFiles" className="text-indigo-600">
 					NeurIPS 2020 style template&nbsp;
 				</a>
 				and not be longer than two pages. Your team's proposal should be submitted as a PDF using Canvas. Each group only needs to submit one copy of the proposal. You can submit your proposal as many times as you need before the deadline. Please name your PDF "proposal-{"{group number}"}.pdf".

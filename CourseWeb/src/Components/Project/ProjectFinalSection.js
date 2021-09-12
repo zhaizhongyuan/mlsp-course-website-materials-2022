@@ -12,7 +12,7 @@ export default function ProjectFinalSection() {
 			</p>
 			<p className="text-xl leading-7 text-gray-500 mb-4">
 			Below, we've enumerated several items that your midterm report must include. Your submission must follow the&nbsp;
-				<a href="/" className="text-indigo-600">
+				<a href="https://nips.cc/Conferences/2020/PaperInformation/StyleFiles" className="text-indigo-600">
 					NeurIPS 2020 style template&nbsp;
 				</a>
 				and not be longer than two pages. References do not count towards your two-page limit. Your team's midterm report should be submitted as a PDF using Canvas. Each group only needs to submit one copy of the report. You can submit your report as many times as you need before the deadline. Please name your PDF "final-{"{group number}"}.pdf". Your report will be graded with the following things in mind:
