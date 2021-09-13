@@ -18,7 +18,7 @@ const assignments = [
 	},{
 		title: 'Second Assignment',
 		description: 'Data-Driven Representations, Boosting, Face Detection',
-		dueDate: '10/11/2021 at 11:59 PM EST',
+		dueDate: '10/12/2021 at 11:59 PM EST',
 		attachments: [
 			{
 				title: 'Writeup',
@@ -32,7 +32,7 @@ const assignments = [
 	},{
 		title: 'Third Assignment',
 		description: 'NMF, Clustering, Sparse Optimization, SVMs',
-		dueDate: '11/05/2021 at 11:59 PM EST',
+		dueDate: '11/02/2021 at 11:59 PM EST',
 		attachments: [
 			{
 				title: 'Writeup',
