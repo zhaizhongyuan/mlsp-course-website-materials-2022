@@ -8,7 +8,7 @@ export default function ProjectFinalSection() {
 				Due Date
 			</span>
 			<p className="text-xl leading-7 text-gray-500 mb-4">
-			Wow, we're already at the end of the semester. We can't wait to read what you've accomplished with your projects. The final report will be due on December 13th, 2020 at 11:59 PM EST. 
+			Wow, we're already at the end of the semester. We can't wait to read what you've accomplished with your projects. The final report will be due on December 13th, 2021 at 11:59 PM EST. 
 			</p>
 			<p className="text-xl leading-7 text-gray-500 mb-4">
 			Below, we've enumerated several items that your midterm report must include. Your submission must follow the&nbsp;

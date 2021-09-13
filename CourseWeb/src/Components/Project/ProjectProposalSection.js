@@ -8,7 +8,7 @@ export default function ProjectProposalSection() {
 				Due Date
 			</span>
 			<p className="text-xl leading-7 text-gray-500 mb-4">
-				Now that you all have your teams, it's time to write the proposal for your project. Your proposal will be due on September 30th, 2020 at 11:59 PM EST. Once the course staff has had time to review your proposal, we will assign a mentor to your team.
+				Now that you all have your teams, it's time to write the proposal for your project. Your proposal will be due on September 30th, 2021 at 11:59 PM EST. Once the course staff has had time to review your proposal, we will assign a mentor to your team.
 			</p>
 			<p className="text-xl leading-7 text-gray-500 mb-4">
 				Below, we've enumerated several items that your proposal must include. Your submission must follow the&nbsp;

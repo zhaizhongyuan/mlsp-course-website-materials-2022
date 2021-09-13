@@ -8,7 +8,7 @@ export default function ProjectMidtermSection() {
 				Due Date
 			</span>
 			<p className="text-xl leading-7 text-gray-500 mb-4">
-			We hope the first part of the semester has been good! We want to check in with your team about how your project has been going. The midterm report is due on November 10th, 2020 at 11:59 PM EST. 
+			We hope the first part of the semester has been good! We want to check in with your team about how your project has been going. The midterm report is due on November 10th, 2021 at 11:59 PM EST. 
 			</p>
 			<p className="text-xl leading-7 text-gray-500 mb-4">
 			Below, we've enumerated several items that your midterm report must include. Your submission must follow the&nbsp;
