@@ -20,7 +20,7 @@ const lectures = [
 	},{
 		topic: 'Deterministic Representations 1',
 		date: 'September 14, 2021',
-		link: '#'
+		link: '/ppt/Lecture5_deterministicreps.pdf'
 	},{
 		topic: 'Data-Driven Representations 2',
 		date: 'September 16, 2021',
