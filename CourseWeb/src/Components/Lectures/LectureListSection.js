@@ -14,7 +14,7 @@ const lectures = [
 		date: 'September 7, 2021',
 		link: '/ppt/Lec3  LinearAlgebra2.pdf'
 	},{
-		topic: 'Optimization .',
+		topic: 'Optimization',
 		date: 'September 9, 2021',
 		link: '/ppt/Lec4 with extension.rar'
 	},{
@@ -24,7 +24,7 @@ const lectures = [
 	},{
 		topic: 'Data-Driven Representations 2',
 		date: 'September 16, 2021',
-		link: '#'
+		link: '/ppt/Lecture6.EigenRepresentations.pdf'
 	},{
 		topic: 'Classification and Metaclassifiers',
 		date: 'September 21, 2021',
