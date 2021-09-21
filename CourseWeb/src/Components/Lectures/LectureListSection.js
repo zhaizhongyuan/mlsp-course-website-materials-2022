@@ -26,9 +26,9 @@ const lectures = [
 		date: 'September 16, 2021',
 		link: '/ppt/Lecture6.EigenRepresentations.pdf'
 	},{
-		topic: 'Classification and Metaclassifiers',
+		topic: 'Classification and Metaclassifiers.',
 		date: 'September 21, 2021',
-		link: '#'
+		link: '/ppt/Lecture7.BoostingOnly.pdf'
 	},{
 		topic: 'Face Detection',
 		date: 'September 23, 2021',
