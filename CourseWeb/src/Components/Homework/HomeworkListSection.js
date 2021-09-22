@@ -4,7 +4,7 @@ const assignments = [
 	{
 		title: 'First Assignment',
 		description: 'Introduction, Linear Algebra, Optimization',
-		dueDate: '09/21/2021 at 11:59 PM EST',
+		dueDate: '09/21/2021 at 11:59 PM EST/EDT',
 		attachments: [
 			{
 				title: 'Writeup',
@@ -18,21 +18,21 @@ const assignments = [
 	},{
 		title: 'Second Assignment',
 		description: 'Data-Driven Representations, Boosting, Face Detection',
-		dueDate: '10/12/2021 at 11:59 PM EST',
+		dueDate: '10/12/2021 at 11:59 PM EST/EDT',
 		attachments: [
 			{
 				title: 'Writeup',
-				link: '#'
+				link: '/hw/hw2_handout (1).pdf'
 			},
 			{
 				title: 'Data',
-				link: '#'
+				link: '/hw/hw2_materials_f21.rar'
 			}
 		]
 	},{
 		title: 'Third Assignment',
 		description: 'NMF, Clustering, Sparse Optimization, SVMs',
-		dueDate: '11/02/2021 at 11:59 PM EST',
+		dueDate: '11/02/2021 at 11:59 PM EST/EDT',
 		attachments: [
 			{
 				title: 'Writeup',
@@ -46,7 +46,7 @@ const assignments = [
 	},{
 		title: 'Fourth Assignment',
 		description: 'Maximum Likelihood Estimation, Expectation Maximization',
-		dueDate: '11/23/2021 at 11:59 PM EST',
+		dueDate: '11/23/2021 at 11:59 PM EST/EDT',
 		attachments: [
 			{
 				title: 'Writeup',
