@@ -32,7 +32,7 @@ const lectures = [
 	},{
 		topic: 'Face Detection',
 		date: 'September 23, 2021',
-		link: '#'
+		link: '/ppt/Lecture8.facedetection.pdf'
 	},
 	{
 		topic: 'Non-Negative Matrix Factorization',
