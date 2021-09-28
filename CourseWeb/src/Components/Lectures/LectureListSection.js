@@ -26,7 +26,7 @@ const lectures = [
 		date: 'September 16, 2021',
 		link: '/ppt/Lecture6.EigenRepresentations.pdf'
 	},{
-		topic: 'Classification and Metaclassifiers.',
+		topic: 'Classification and Metaclassifiers',
 		date: 'September 21, 2021',
 		link: '/ppt/Lecture7.BoostingOnly.pdf'
 	},{
@@ -35,9 +35,9 @@ const lectures = [
 		link: '/ppt/Lecture8.facedetection.pdf'
 	},
 	{
-		topic: 'Non-Negative Matrix Factorization',
+		topic: 'Non-Negative Matrix Factorization.',
 		date: 'September 28, 2021',
-		link: '#'
+		link: '/ppt/Lecture9.NMF.pdf'
 	},{
 		topic: 'Probability and Statistics',
 		date: 'September 30, 2021',
