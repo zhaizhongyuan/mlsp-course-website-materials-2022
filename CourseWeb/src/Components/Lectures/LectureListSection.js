@@ -41,7 +41,7 @@ const lectures = [
 	},{
 		topic: 'Probability and Statistics',
 		date: 'September 30, 2021',
-		link: '#'
+		link: '/ppt/Lecture10.ProbInfoth.pdf'
 	},{
 		topic: 'Independent Component Analysis 1',
 		date: 'October 5, 2021',
