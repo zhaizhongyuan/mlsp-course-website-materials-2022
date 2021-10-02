@@ -39,7 +39,7 @@ const lectures = [
 		date: 'September 28, 2021',
 		link: '/ppt/Lecture9.NMF.pdf'
 	},{
-		topic: 'Probability and Statistics',
+		topic: 'Probability and Information Theory',
 		date: 'September 30, 2021',
 		link: '/ppt/Lecture10.ProbInfoth.pdf'
 	},{
