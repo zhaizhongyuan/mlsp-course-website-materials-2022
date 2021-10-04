@@ -35,7 +35,7 @@ const lectures = [
 		link: '/ppt/Lecture8.facedetection.pdf'
 	},
 	{
-		topic: 'Non-Negative Matrix Factorization.',
+		topic: 'Non-Negative Matrix Factorization',
 		date: 'September 28, 2021',
 		link: '/ppt/Lecture9.NMF.pdf'
 	},{
@@ -45,7 +45,7 @@ const lectures = [
 	},{
 		topic: 'Independent Component Analysis 1',
 		date: 'October 5, 2021',
-		link: '/ppt/LLecture 11 ICA.pdf'
+		link: '/ppt/Lecture11 ICA.pdf'
 	},{
 		topic: 'Independent Component Analysis 2',
 		date: 'October 7, 2021',
