@@ -32,7 +32,7 @@ const assignments = [
 	},{
 		title: 'Third Assignment',
 		description: 'NMF, Clustering, Sparse Optimization, SVMs',
-		dueDate: '11/02/2021 at 11:59 PM EST/EDT',
+		dueDate: '11/04/2021 at 11:59 PM EST/EDT',
 		attachments: [
 			{
 				title: 'Writeup',
