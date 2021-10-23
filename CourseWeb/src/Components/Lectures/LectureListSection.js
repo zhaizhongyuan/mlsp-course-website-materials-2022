@@ -63,9 +63,9 @@ const lectures = [
 		date: 'October 19, 2021',
 		link: '/ppt/Lecture14 sparseovercomplete.pdf'
 	},{
-		topic: 'Guest Lecture: Compressed Sensing',
+		topic: 'Guest Lecture: Compressed Sensing.',
 		date: 'October 21, 2021',
-		link: '#'
+		link: '/ppt/21_10_Bhiksha.pdf'
 	},{
 		topic: 'Regression and Prediction',
 		date: 'October 26, 2021',
