@@ -61,7 +61,7 @@ const lectures = [
 	},{
 		topic: 'Dictionary Representations.',
 		date: 'October 19, 2021',
-		link: '/ppt/Lecture14.sparseovercomplete.pdf'
+		link: '/ppt/Lecture14 sparseovercomplete.pdf'
 	},{
 		topic: 'Guest Lecture: Compressed Sensing',
 		date: 'October 21, 2021',
