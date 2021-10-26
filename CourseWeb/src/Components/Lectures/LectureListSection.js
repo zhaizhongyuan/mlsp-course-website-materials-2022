@@ -59,17 +59,17 @@ const lectures = [
 		date: 'October 14, 2021',
 		link: '#'
 	},{
-		topic: 'Dictionary Representations.',
+		topic: 'Dictionary Representations',
 		date: 'October 19, 2021',
 		link: '/ppt/Lecture14 sparseovercomplete.pdf'
 	},{
-		topic: 'Guest Lecture: Compressed Sensing.',
+		topic: 'Guest Lecture: Compressed Sensing',
 		date: 'October 21, 2021',
 		link: '/ppt/21_10_Bhiksha.pdf'
 	},{
 		topic: 'Regression and Prediction',
 		date: 'October 26, 2021',
-		link: '#'
+		link: '/ppt/Lecture15.regression.pdf'
 	},{
 		topic: 'Linear Classifiers',
 		date: 'October 28, 2021',
