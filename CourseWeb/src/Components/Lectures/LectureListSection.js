@@ -73,7 +73,7 @@ const lectures = [
 	},{
 		topic: 'Linear Classifiers',
 		date: 'October 28, 2021',
-		link: '#'
+		link: '/ppt/SVM.pdf'
 	},{
 		topic: 'Expectation Maximization 1',
 		date: 'November 2, 2021',
