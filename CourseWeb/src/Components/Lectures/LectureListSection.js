@@ -77,7 +77,7 @@ const lectures = [
 	},{
 		topic: 'Expectation Maximization 1',
 		date: 'November 2, 2021',
-		link: '#'
+		link: '/ppt/EMpdf.pdf'
 	},{
 		topic: 'Expectation Maximization 1',
 		date: 'November 4, 2021',
