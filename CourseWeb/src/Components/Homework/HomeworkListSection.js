@@ -50,11 +50,11 @@ const assignments = [
 		attachments: [
 			{
 				title: 'Writeup',
-				link: '#'
+				link: '/hw/hw4_handout.pdf'
 			},
 			{
 				title: 'Data',
-				link: '#'
+				link: '/hw/hw4materials_f21.zip'
 			}
 		]
 	},{
