@@ -81,11 +81,11 @@ const lectures = [
 	},{
 		topic: 'Expectation Maximization 1',
 		date: 'November 4, 2021',
-		link: '#'
+		link: '/ppt/EMpdf.pdf'
 	},{
 		topic: 'Factor Analysis',
 		date: 'November 9, 2021',
-		link: '#'
+		link: '/ppt/lsc19 FA.pdf'
 	},{
 		topic: 'Supervised Representations',
 		date: 'November 11, 2021',
