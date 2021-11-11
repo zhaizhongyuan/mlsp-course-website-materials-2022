@@ -73,7 +73,7 @@ const lectures = [
 	},{
 		topic: 'Linear Classifiers',
 		date: 'October 28, 2021',
-		link: '/ppt/SVM.pdf'
+		link: '/ppt/lec17 SVM.pdf'
 	},{
 		topic: 'Expectation Maximization 1',
 		date: 'November 2, 2021',
@@ -85,7 +85,7 @@ const lectures = [
 	},{
 		topic: 'Factor Analysis',
 		date: 'November 9, 2021',
-		link: '/ppt/lsc19 FA.pdf'
+		link: '/ppt/lsc20 FA.pdf'
 	},{
 		topic: 'Supervised Representations',
 		date: 'November 11, 2021',
