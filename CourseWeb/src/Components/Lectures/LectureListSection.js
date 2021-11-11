@@ -89,7 +89,7 @@ const lectures = [
 	},{
 		topic: 'Supervised Representations',
 		date: 'November 11, 2021',
-		link: '#'
+		link: '/ppt/Lecture21.CCA_LDA.pdf'
 	},{
 		topic: 'Hidden Markov Models 1',
 		date: 'November 16, 2021',
