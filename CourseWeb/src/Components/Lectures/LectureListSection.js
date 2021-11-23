@@ -101,7 +101,7 @@ const lectures = [
 	},{
 		topic: 'Non-Linear Dynamical Systems',
 		date: 'November 23, 2021',
-		link: '/ppt/Nonlinear_Dynamics.pdf'
+		link: '/ppt/Nonlinear Dynamics.pdf'
 	},{
 		topic: 'Happy Thanksgiving!',
 		date: 'November 25, 2021',
