@@ -79,7 +79,7 @@ const lectures = [
 		date: 'November 2, 2021',
 		link: '/ppt/EMpdf.pdf'
 	},{
-		topic: 'Expectation Maximization 1',
+		topic: 'Expectation Maximization 2',
 		date: 'November 4, 2021',
 		link: '/ppt/EMpdf.pdf'
 	},{
@@ -101,7 +101,7 @@ const lectures = [
 	},{
 		topic: 'Non-Linear Dynamical Systems',
 		date: 'November 23, 2021',
-		link: '#'
+		link: '/ppt/Nonlinear_Dynamics.pdf'
 	},{
 		topic: 'Happy Thanksgiving!',
 		date: 'November 25, 2021',
