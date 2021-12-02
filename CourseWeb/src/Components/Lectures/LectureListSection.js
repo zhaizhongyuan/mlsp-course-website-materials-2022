@@ -114,7 +114,7 @@ const lectures = [
 	{
 		topic: 'Kalman Filtering 2',
 		date: 'December 2, 2021',
-		link: '#'
+		link: '/ppt/Lecture24x.kalman.pdf'
 	}
 ]
 export default function LectureListSection() {
